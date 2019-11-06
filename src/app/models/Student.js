@@ -4,10 +4,6 @@ class Student extends Model {
   static init(sequelize) {
     super.init(
       {
-        id : {
-          type: Sequelize.INTEGER,
-          primaryKey: true
-        },
         name: Sequelize.STRING,
         email: Sequelize.STRING,
         idade: Sequelize.FLOAT,
