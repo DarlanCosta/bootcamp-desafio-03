@@ -3,27 +3,33 @@ import { Router } from 'express';
 import StudentController from './app/controllers/StudentController';
 import SessionController from './app/controllers/SessionController';
 import PlanController from './app/controllers/PlanController';
+import RegistrationController from './app/controllers/RegistrationController';
 
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
 
-
+// Autenticação
 routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 
+// Alunos
 routes.get('/students', StudentController.index);
 routes.post('/students', StudentController.store);
 routes.put('/students/:id', StudentController.update);
 
-
+// Planos
 routes.get('/plans', PlanController.index);
-
 routes.post('/plans', PlanController.store);
-
 routes.put('/plans/:id', PlanController.update);
-
 routes.delete('/plans/:id', PlanController.delete);
+
+// Matrículas
+routes.get('/registration', RegistrationController.index);
+routes.post('/registration', RegistrationController.store);
+routes.put('/registration/:id', RegistrationController.update);
+routes.delete('/registration/:id', RegistrationController.delete);
+
 
 export default routes;
